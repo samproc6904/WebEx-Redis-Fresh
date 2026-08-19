@@ -9,5 +9,5 @@
   "auth_date_max_age": 86400,
   "debug": true,
   "backend_url": "http://localhost:8000",
-  "redis_url": "redis://default:AyhsGFFLGoARCuTntBfElrEMCcQQOjgI@redis.railway.internal:6379"
+  "redis_url": "redis://default:qyWOTblPymsfElGDrREzVsxVMYiWsWme@redis.railway.internal:6379"
 }
