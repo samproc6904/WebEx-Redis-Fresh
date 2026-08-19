@@ -6,11 +6,16 @@ import logging
 import os
 import time
 import threading
+from pathlib import Path
 
-REDIS_URL = os.environ.get(
-    "REDIS_URL",
-    "redis://default:AyhsGFFLGoARCuTntBfElrEMCcQQOjgI@redis.railway.internal:6379",
-).strip()
+# Load REDIS_URL from config.json (never from env vars)
+_config_path = Path(__file__).resolve().parent.parent / "config.json"
+try:
+    with open(_config_path, "r", encoding="utf-8") as _f:
+        _cfg = json.load(_f)
+    REDIS_URL = str(_cfg.get("redis_url", "")).strip()
+except Exception:
+    REDIS_URL = ""
 
 _redis_client = None
 _redis_lock = threading.Lock()

@@ -1,11 +1,13 @@
 {
   "bot_token": "8817688817:AAGsv7fhD_1_HtqqrDbi_sVYAD5um37VnEA",
   "bot_username": "OmKimi_bot",
-  "bot_name": "OmKimi",
+  "bot_name": "Webex",
   "owner_id": 6426931258,
   "allowed_ids": [],
-  "dev_key": "0YLvS1prjs8PYPv5xuV240b7SHJydlju",
+  "dev_key": "7032185055",
   "session_ttl_hours": 24,
   "auth_date_max_age": 86400,
-  "debug": true
+  "debug": true,
+  "backend_url": "http://localhost:8000",
+  "redis_url": "redis://default:AyhsGFFLGoARCuTntBfElrEMCcQQOjgI@redis.railway.internal:6379"
 }

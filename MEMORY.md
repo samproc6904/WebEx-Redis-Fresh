@@ -94,5 +94,7 @@ Backend kahin aur deploy hoga (Railway likely). Frontend backend hi serve karta 
 
 ## Rules
 
+- **Variables config.json mein save honge, Railway env vars mein nahi.** Saare secrets, tokens, keys, URLs — sab config.json mein store karo. Railway pe variables set nahi karna.
 - **Browser tool use nahi karna.** (gstack browse binary / headless browser / screenshot tooling) — layout/viewing ke liye browser automation allowed nahi. Code + static verification se kaam karna hai.
 - **Tunnel URL kabhi change nahi karna.** Quick tunnel restart mat karo. Backend/frontend restart karo sirf (`kill $(lsof -t -i:8000)` + uvicorn start). Tunnel same rahega har baar. Agar tunnel dead hai to user ko batao, khud mat restart karo.
+- **Backend/Frontend restart karo, URL same rahega.** Naya tunnel image mat banao. Sirf restart karo.
