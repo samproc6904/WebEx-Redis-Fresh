@@ -1,0 +1,115 @@
+<div class="shopify-page">
+
+  <!-- Stats Row -->
+  <div class="sx-stats">
+    <div class="sx-stat purple">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="sx-stat-label">TOTAL SITES</div>
+      <div class="sx-stat-val" id="sTotalSites">0</div>
+    </div>
+    <div class="sx-stat green">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="sx-stat-label">VALID</div>
+      <div class="sx-stat-val" id="sValidSites">0</div>
+    </div>
+    <div class="sx-stat red">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      </div>
+      <div class="sx-stat-label">INVALID</div>
+      <div class="sx-stat-val" id="sInvalidSites">0</div>
+    </div>
+    <div class="sx-stat amber">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="sx-stat-label">ERRORS</div>
+      <div class="sx-stat-val" id="sErrorSites">0</div>
+    </div>
+  </div>
+
+  <!-- Add Sites Card -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>Add Sites</span>
+      </div>
+      <div class="sx-card-meta">
+        <span class="sx-count" id="siteCount">0 sites</span>
+      </div>
+    </div>
+    <textarea id="siteArea" class="sx-textarea" rows="6" placeholder="example.com&#10;shop.mystore.com&#10;buy.stripe.com/..."></textarea>
+    <div class="sx-card-actions">
+      <label class="sx-btn-outline" id="siteImportLabel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Import File
+        <input type="file" id="siteFileInput" accept=".txt,.csv" hidden>
+      </label>
+      <div class="sx-action-row">
+        <button class="sx-btn-solid sites-add-btn" id="addSitesBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          Add Sites
+        </button>
+        <button class="sx-btn-outline" id="clearSitesBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Clear
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sites Table Card -->
+  <div class="sx-card results-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <span class="dot on"></span>
+        <span>Sites List</span>
+      </div>
+      <div class="sx-card-meta">
+        <input type="text" id="siteFilter" class="sx-inline-input" placeholder="filter..." style="width:100px">
+        <button class="sx-btn-outline sm" id="checkAllBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+          Check All
+        </button>
+        <button class="sx-btn-outline sm" id="exportSitesBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+      </div>
+    </div>
+    <div class="sx-table-wrap">
+      <table class="sx-table" id="sitesTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>URL</th>
+            <th>AMOUNT</th>
+            <th>GATEWAY</th>
+            <th>STATUS</th>
+            <th>LAST CHECK</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody id="sitesBody">
+        </tbody>
+      </table>
+      <div class="sx-empty" id="sitesEmpty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <div class="sx-empty-title">No sites added</div>
+        <div class="sx-empty-sub">Add sites above to start checking</div>
+      </div>
+      <!-- Pagination -->
+      <div class="sx-pagination" id="sitesPagination" style="display:none">
+        <button class="sx-btn-outline sm" id="sitesPrev">← Prev</button>
+        <span class="sx-page-info" id="sitesPageInfo">Page 1 / 1</span>
+        <button class="sx-btn-outline sm" id="sitesNext">Next →</button>
+      </div>
+    </div>
+  </div>
+
+</div>

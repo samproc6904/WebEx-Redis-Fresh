@@ -1,0 +1,159 @@
+<div class="shopify-page">
+
+  <!-- Welcome Banner -->
+  <div class="sx-card" style="border-left: 3px solid var(--purple);">
+    <div style="font-size: 0.95rem; color: var(--muted);">
+      Welcome back, <strong id="dashUser" style="color: var(--fg);">User</strong> — your checker is live.
+    </div>
+  </div>
+
+  <!-- Global Stats -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>GLOBAL STATS</span>
+      </div>
+    </div>
+    <div class="sx-stats" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="sx-stat purple">
+        <div class="sx-stat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="sx-stat-label">TOTAL CHECKED</div>
+        <div class="sx-stat-val" id="gChecked">0</div>
+      </div>
+      <div class="sx-stat green">
+        <div class="sx-stat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <div class="sx-stat-label">LIVE CARDS</div>
+        <div class="sx-stat-val" id="gLive">0</div>
+      </div>
+      <div class="sx-stat amber">
+        <div class="sx-stat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="sx-stat-label">CHARGED</div>
+        <div class="sx-stat-val" id="gCharged">0</div>
+      </div>
+      <div class="sx-stat red">
+        <div class="sx-stat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="sx-stat-label">DEAD</div>
+        <div class="sx-stat-val" id="gDead">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module Cards -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Modules</span>
+      </div>
+    </div>
+    <button class="module" data-route="shopify" style="width:100%;">
+      <span class="module-icon" aria-hidden="true">S</span>
+      <span class="module-body">
+        <strong>Shopify</strong>
+        <small>Open the Shopify console</small>
+      </span>
+      <span class="module-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+
+  <!-- Recent Sessions -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Recent Sessions</span>
+      </div>
+      <span class="sx-count" id="sessionCount">0 sessions</span>
+    </div>
+    <div id="sessionsList" style="display:flex;flex-direction:column;gap:8px;padding:0 2px">
+      <div class="sx-empty" id="sessionsEmpty" style="padding:24px">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="sx-empty-title">No sessions yet</div>
+        <div class="sx-empty-sub">Start a check from the Shopify console</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Preview Modal -->
+  <div class="sx-modal-overlay" id="sessModal">
+    <div class="sx-modal" style="max-width:560px;max-height:88vh;display:flex;flex-direction:column">
+      <div class="sx-modal-head">
+        <h3>Session Preview</h3>
+        <button class="sx-modal-close" onclick="document.getElementById('sessModal').classList.remove('open')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div style="padding:14px 18px;overflow-y:auto;flex:1">
+        <!-- Session header -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span id="spvId" style="font-family:monospace;font-size:12px;color:#a78bfa;font-weight:600">—</span>
+          <span id="spvStatus" class="sx-status-badge pending">—</span>
+        </div>
+        <!-- Session stats -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
+          <div style="text-align:center;padding:10px 4px;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:700;color:#a78bfa" id="spvChecked">0</div>
+            <div style="font-size:9px;color:var(--muted)">CHECKED</div>
+          </div>
+          <div style="text-align:center;padding:10px 4px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:700;color:#34d399" id="spvLive">0</div>
+            <div style="font-size:9px;color:var(--muted)">LIVE</div>
+          </div>
+          <div style="text-align:center;padding:10px 4px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:700;color:#f59e0b" id="spvCharged">0</div>
+            <div style="font-size:9px;color:var(--muted)">CHARGED</div>
+          </div>
+          <div style="text-align:center;padding:10px 4px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:8px">
+            <div style="font-size:18px;font-weight:700;color:#ef4444" id="spvDead">0</div>
+            <div style="font-size:9px;color:var(--muted)">DEAD</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+          <span class="sx-pill" style="font-size:10px">Cards: <span id="spvCards">0</span></span>
+          <span class="sx-pill" style="font-size:10px">Sites: <span id="spvSites">0</span></span>
+          <span class="sx-pill" style="font-size:10px">Proxies: <span id="spvProxies">0</span></span>
+          <span class="sx-pill" style="font-size:10px">Threads: <span id="spvThreads">0</span></span>
+          <span class="sx-pill" style="font-size:10px">Range: <span id="spvRange">$0–$0</span></span>
+          <span class="sx-pill" style="font-size:10px">Started: <span id="spvTime">—</span></span>
+        </div>
+        <!-- Results preview -->
+        <div class="sx-card" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06)">
+          <div class="sx-card-head">
+            <span style="font-size:11px;font-weight:600;color:var(--muted);letter-spacing:0.06em">LATEST RESULTS</span>
+          </div>
+          <div class="sx-table-wrap" style="max-height:220px;overflow-y:auto">
+            <table class="sx-table">
+              <thead><tr><th>CARD</th><th>RESPONSE</th><th>STATUS</th></tr></thead>
+              <tbody id="spvResults"></tbody>
+            </table>
+            <div class="sx-empty" id="spvEmpty" style="padding:20px">
+              <div class="sx-empty-title">No results yet</div>
+              <div class="sx-empty-sub">This session has no checked cards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Actions -->
+      <div style="display:flex;gap:10px;padding:14px 18px;border-top:1px solid rgba(255,255,255,0.08)">
+        <button class="sx-btn-solid" id="spvViewBtn" style="flex:1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          View Session
+        </button>
+        <button class="sx-btn-red" id="spvStopBtn" style="flex:1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+          Stop Session
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

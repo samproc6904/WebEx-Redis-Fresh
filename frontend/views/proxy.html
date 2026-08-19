@@ -1,0 +1,120 @@
+<div class="shopify-page">
+
+  <!-- Proxy Input Card -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Proxy Input</span>
+      </div>
+      <div class="sx-card-meta">
+        <span class="sx-count" id="proxyCount">0 proxies</span>
+        <button class="sx-btn-outline sm" id="proxyImportLabel">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Import File
+        </button>
+        <input type="file" id="proxyFileInput" accept=".txt,.csv" hidden>
+      </div>
+    </div>
+    <textarea id="proxyArea" class="sx-textarea" rows="6" placeholder="host:port:user:pass&#10;user:pass@host:port&#10;host:port&#10;..."></textarea>
+    <div class="sx-card-meta" style="justify-content: space-between;">
+      <div class="sx-pill">Formats: ip:port:user:pass · user:pass@ip:port · ip:port</div>
+      <div class="sx-field-inline">
+        <span class="sx-inline-label">TIMEOUT</span>
+        <input type="number" id="proxyTimeout" class="sx-inline-input" value="10" min="3" max="60">
+      </div>
+    </div>
+    <div class="sx-action-row">
+      <button class="sx-btn-purple" id="proxyCheckBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Check Proxies
+      </button>
+      <button class="sx-btn-outline" id="proxyClearBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="sx-progress-wrap" id="proxyProgressWrap" style="display:none">
+    <div class="sx-progress-head">
+      <span>CHECKING <span id="ppCurrent">0</span>/<span id="ppTotal">0</span></span>
+      <span id="ppPercent">0%</span>
+    </div>
+    <div class="sx-progress-bar">
+      <div class="sx-progress-fill purple" id="ppFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Stats Row -->
+  <div class="sx-stats">
+    <div class="sx-stat purple">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="sx-stat-label">TOTAL</div>
+      <div class="sx-stat-val" id="pTotalChecked">0</div>
+    </div>
+    <div class="sx-stat green">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="sx-stat-label">LIVE</div>
+      <div class="sx-stat-val" id="pLive">0</div>
+    </div>
+    <div class="sx-stat red">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+      </div>
+      <div class="sx-stat-label">DEAD</div>
+      <div class="sx-stat-val" id="pDead">0</div>
+    </div>
+    <div class="sx-stat amber">
+      <div class="sx-stat-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="sx-stat-label">SAVED</div>
+      <div class="sx-stat-val" id="pSaved">0</div>
+    </div>
+  </div>
+
+  <!-- Saved Proxies -->
+  <div class="sx-card results-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <span class="dot on"></span>
+        <span>Saved Proxies</span>
+      </div>
+      <div class="sx-card-meta">
+        <span class="sx-count" id="pSavedCount">0</span>
+        <button class="sx-btn-outline sm" id="proxyExportBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+        <button class="sx-btn-outline sm" id="proxyDeleteAllBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Delete All
+        </button>
+      </div>
+    </div>
+    <div class="sx-table-wrap">
+      <table class="sx-table" id="proxyTable">
+        <thead>
+          <tr>
+            <th>PROXY</th>
+            <th>STATUS</th>
+          </tr>
+        </thead>
+        <tbody id="proxyBody">
+        </tbody>
+      </table>
+      <div class="sx-empty" id="proxyEmpty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="sx-empty-title">No proxies saved</div>
+        <div class="sx-empty-sub">Check proxies above to save live ones</div>
+      </div>
+    </div>
+  </div>
+
+</div>

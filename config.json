@@ -1,0 +1,11 @@
+{
+  "bot_token": "8817688817:AAGsv7fhD_1_HtqqrDbi_sVYAD5um37VnEA",
+  "bot_username": "OmKimi_bot",
+  "bot_name": "OmKimi",
+  "owner_id": 6426931258,
+  "allowed_ids": [],
+  "dev_key": "0YLvS1prjs8PYPv5xuV240b7SHJydlju",
+  "session_ttl_hours": 24,
+  "auth_date_max_age": 86400,
+  "debug": true
+}

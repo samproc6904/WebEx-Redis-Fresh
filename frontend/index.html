@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Webex — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="login-page">
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
+
+  <main class="card" role="main">
+    <div class="logo">W</div>
+    <h1 id="title">Webex</h1>
+    <p class="sub">Secure console access</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-tg" role="tab" aria-selected="true" aria-controls="panel-tg">Telegram</button>
+      <button class="tab" id="tab-owner" role="tab" aria-selected="false" aria-controls="panel-owner" hidden>Owner</button>
+    </div>
+
+    <div id="panel-tg" class="panel" role="tabpanel" aria-labelledby="tab-tg">
+      <div id="widget-box" class="widget-box">
+        <p class="hint">Loading login…</p>
+      </div>
+    </div>
+
+    <div id="panel-owner" class="panel" role="tabpanel" aria-labelledby="tab-owner" hidden>
+      <label class="field">
+        <span>Dev Key</span>
+        <input id="dev-key" type="password" autocomplete="off" placeholder="Paste dev key" />
+      </label>
+      <button id="dev-login" class="btn primary">Login as Owner</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <footer>
+      <span class="dot" aria-hidden="true"></span>
+      <span id="footer-text">Standing by</span>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

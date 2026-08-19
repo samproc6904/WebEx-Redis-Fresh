@@ -1,0 +1,77 @@
+<!-- Settings Page — Theme Switcher -->
+<div class="shopify-page">
+  <!-- Header -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Settings
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Section -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        Theme
+      </div>
+      <span class="sx-badge purple" id="currentThemeLabel">Dark+</span>
+    </div>
+    <div class="theme-grid" id="themeGrid">
+      <!-- Themes injected by JS -->
+    </div>
+  </div>
+
+  <!-- Accent Color Section -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="15.5" r="2.5"/><circle cx="8.5" cy="15.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/></svg>
+        Accent Color
+      </div>
+    </div>
+    <div class="accent-grid" id="accentGrid">
+      <!-- Accent colors injected by JS -->
+    </div>
+  </div>
+
+  <!-- Font Size Section -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        Font Size
+      </div>
+    </div>
+    <div class="font-size-row">
+      <button class="sx-btn-outline sm" data-fontsize="13">A-</button>
+      <span class="font-size-label" id="fontSizeLabel">14px</span>
+      <button class="sx-btn-outline sm" data-fontsize="15">A+</button>
+    </div>
+  </div>
+
+  <!-- Border Radius Section -->
+  <div class="sx-card">
+    <div class="sx-card-head">
+      <div class="sx-card-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+        Border Style
+      </div>
+    </div>
+    <div class="border-style-row">
+      <button class="sx-btn-outline sm border-opt active" data-radius="6">Sharp</button>
+      <button class="sx-btn-outline sm border-opt" data-radius="10">Round</button>
+      <button class="sx-btn-outline sm border-opt" data-radius="16">Pill</button>
+    </div>
+  </div>
+
+  <!-- Reset -->
+  <div class="sx-card">
+    <button class="sx-btn-red" id="resetThemeBtn" style="width:100%">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+      Reset to Default
+    </button>
+  </div>
+</div>

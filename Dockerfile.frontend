@@ -1,0 +1,11 @@
+FROM nginx:alpine
+
+RUN apk add --no-cache bash
+
+COPY frontend/ /usr/share/nginx/html/
+COPY start-nginx.sh /start-nginx.sh
+RUN chmod +x /start-nginx.sh
+
+EXPOSE 80
+
+CMD ["/start-nginx.sh"]
