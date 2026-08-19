@@ -9,7 +9,7 @@ import threading
 
 REDIS_URL = os.environ.get(
     "REDIS_URL",
-    "redis://default:GCUFlteUbMuwpppQZVGMJlfbKRNTRWWN@redis.railway.internal:6379",
+    "redis://default:AyhsGFFLGoARCuTntBfElrEMCcQQOjgI@redis.railway.internal:6379",
 ).strip()
 
 _redis_client = None
