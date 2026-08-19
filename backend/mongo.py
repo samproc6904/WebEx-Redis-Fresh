@@ -8,7 +8,7 @@ import time
 import threading
 from pathlib import Path
 
-# Load REDIS_URL from config.json (never from env vars)
+# Load REDIS_URL: config.json first, then Railway env var fallback
 _config_path = Path(__file__).resolve().parent.parent / "config.json"
 try:
     with open(_config_path, "r", encoding="utf-8") as _f:
@@ -16,6 +16,9 @@ try:
     REDIS_URL = str(_cfg.get("redis_url", "")).strip()
 except Exception:
     REDIS_URL = ""
+# Fallback to env var if config.json doesn't have it
+if not REDIS_URL:
+    REDIS_URL = os.environ.get("REDIS_URL", "").strip()
 
 _redis_client = None
 _redis_lock = threading.Lock()
